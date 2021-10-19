@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeController.swift
 //  LBTA_Twitter
 //
 //  Created by Ahmet on 20.10.2021.
@@ -7,15 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class HomeController: UICollectionViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        
+        collectionView.backgroundColor = .green
     }
-
-
 }
-
