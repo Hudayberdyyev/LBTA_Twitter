@@ -20,37 +20,52 @@ class UserCell: UICollectionViewCell {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red
+        imageView.image = UIImage(named: "bbc")
+        imageView.layer.cornerRadius = 5
+//        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     let textLabel: UILabel = {
         let label = UILabel()
-        label.text = "TEST"
-        label.backgroundColor = .yellow
+        label.text = "BBC News"
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "username"
-        label.backgroundColor = .purple
+        label.text = "@bbcnews"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor(red: (130/255.0), green: (130/255.0), blue: (130/255.0), alpha: 1.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let bioTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = .orange
+        textView.backgroundColor = .clear
+        textView.text = "A film crew member has died and another was injured after actor Alec Baldwin discharged a prop firearm on the set of the movie \"Rust\" in New Mexico on Thursday, according to a law enforcement statement provided to CNN."
+        textView.font = UIFont.systemFont(ofSize: 14)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
     let followButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .cyan
+        let twitterColor = UIColor(red: (61/255.0), green: (167/255.0), blue: (244/255.0), alpha: 1.0)
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = twitterColor.cgColor
+        button.setTitleColor(twitterColor, for: .normal)
+        button.setTitle("Follow", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setImage(UIImage(named: "duotone-user-plus"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -66,8 +81,8 @@ class UserCell: UICollectionViewCell {
         // MARK: - Profile image anchors
         profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         // MARK: - TextLabel anchors
         textLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor).isActive = true
@@ -77,7 +92,7 @@ class UserCell: UICollectionViewCell {
         
         // MARK: - Username anchors
         NSLayoutConstraint.activate([
-            usernameLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 8),
+            usernameLabel.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 0),
             usernameLabel.rightAnchor.constraint(equalTo: textLabel.rightAnchor),
             usernameLabel.leftAnchor.constraint(equalTo: textLabel.leftAnchor),
             usernameLabel.heightAnchor.constraint(equalToConstant: 20)
@@ -85,8 +100,8 @@ class UserCell: UICollectionViewCell {
         
         // MARK: - Bio text anchors
         NSLayoutConstraint.activate([
-            bioTextView.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor),
-            bioTextView.leftAnchor.constraint(equalTo: textLabel.leftAnchor),
+            bioTextView.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: -4),
+            bioTextView.leftAnchor.constraint(equalTo: textLabel.leftAnchor, constant: -4),
             bioTextView.rightAnchor.constraint(equalTo: self.rightAnchor),
             bioTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
